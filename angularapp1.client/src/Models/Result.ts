@@ -1,4 +1,4 @@
-class Result {
+export class Result {
   correct: boolean;
   errorMessage: string;
   object: object;

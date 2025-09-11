@@ -1,1 +1,22 @@
 <p>random-user works!</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Genero</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Direccion</th>
+      <th scope="col">Imagen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>{{randomUser?.gender}}</th>
+      <td>{{randomUser?.name?.title }} {{  randomUser?.name?.first }} {{ randomUser?.name?.last}} </td>
+      <td>{{randomUser?.email}}</td>
+      <td>{{randomUser?.location?.country}}</td>
+      <td><img src="{{randomUser?.picture?.medium}}" alt="Alternate Text" /></td>
+    </tr>
+  </tbody>
+</table>

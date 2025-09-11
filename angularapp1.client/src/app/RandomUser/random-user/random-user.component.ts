@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RandomUserService } from '../../services/random-user.service'
-import { RandomUser } from '../../services/random-user.service'
+import { RandomUserService, RandomUser, Results} from '../../services/random-user.service'
 
 @Component({
   selector: 'app-random-user',
@@ -8,16 +7,17 @@ import { RandomUser } from '../../services/random-user.service'
   templateUrl: './random-user.component.html',
   styleUrl: './random-user.component.css'
 })
-export class RandomUserComponent {
-  usuario: any;
+export class RandomUserComponent implements OnInit {
+  randomUser!: RandomUser;
   constructor(private RandomUserService: RandomUserService) { }
 
-  ngOnInit(): void {
-    this.RandomUserService.GetUser().subscribe(data => {
-      console.log("Respuesta completa de la API:", data);
-      this.usuario = data;
-      console.log(this.usuario)
-    });
+  ngOnInit() {
+    this.getRandomUser();
   }
 
+  getRandomUser() {
+    this.RandomUserService.GetRandomUser().subscribe((data: Results) => {
+      this.randomUser = data.results[0];
+    });
+  }
 }

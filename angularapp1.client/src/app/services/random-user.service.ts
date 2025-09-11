@@ -1,27 +1,59 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { Observable } from 'rxjs'; 
 export interface RandomUser {
-  Nombre: string;
-  Email: string;
-  FechaNacimiento: string;
-  Telefono: string;
+  gender: string;
+  name: {
+    title: string;
+    first: string;
+    last: string;
+  }
+  email: string;
+  phone: string;
+  location: {
+    city: string;
+    country: string;
+    postcode: string;
+    state: string;
+  }
+  picture: {
+    large: string;
+    medium: string;
+    thumbnail: string;
+  }
+}
+//export interface Name {
+//  title: string;
+//  first: string;
+//  last: string;
+//}
+
+//export interface Location {
+//  city: string;
+//  country: string;
+//  postcode: string;
+//  state: string;
+//}
+
+//export interface Picture {
+//  large: string;
+//  medium: string;
+//  thumbnail: string;
+//}
+
+export interface Results {
+  results: Array<RandomUser>;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class RandomUserService {
-  private configUrl!: string;
+  private configUrl: string = "https://randomuser.me/api/";
 
   constructor(private http: HttpClient) { }
-
-  GetUser(): Observable<RandomUser> {
-    //this.configUrl = `${environment.nasaUrl}/planetary/apod?api_key=${environment.nasaKey}`;
-    this.configUrl = "https://randomuser.me/api/";
-    const randomUserApi = this.http.get<any>(this.configUrl);
-    //console.log(randomUserApi)
-    return randomUserApi;
+  GetRandomUser(): Observable<Results> {
+    const apod = this.http.get<Results>(this.configUrl);
+    return apod;
   }
 }
