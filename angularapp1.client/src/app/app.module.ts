@@ -12,7 +12,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './Componentes/home/home.component';
 import { AboutComponent } from './Componentes/about/about.component';
-import { RandomUserComponent } from './RandomUser/random-user/random-user.component'
+import { RandomUserComponent } from './RandomUser/random-user/random-user.component';
+import { GetAllComponent } from './Usuario/get-all/get-all.component';
+import { FormularioComponent } from './Usuario/formulario/formulario.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { RandomUserComponent } from './RandomUser/random-user/random-user.compon
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    RandomUserComponent
+    RandomUserComponent,
+    GetAllComponent,
+    FormularioComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
