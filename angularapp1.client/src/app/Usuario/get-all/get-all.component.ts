@@ -19,11 +19,19 @@ export class GetAllComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService) { }
 
-  GetAll() {
-    this.usuarioService.Getall().subscribe((data: Result) => {
-      console.log(data)
-      this.usuarios = data.objects as Usuario[];
+  //GetAll() {
+  //  this.usuarioService.Getall().subscribe((data: Result) => {
+  //    console.log(data)
+  //    this.usuarios = data.objects as Usuario[];
       
+  //  });
+  //}
+
+
+  GetAll() {
+    this.usuarioService.Getall().subscribe((data: Usuario[]) => {
+      console.log(data)
+      this.usuarios = data;
     });
   }
 
